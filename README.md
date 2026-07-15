@@ -24,7 +24,9 @@ ever leaves the page. Open `index.html` from a USB stick and it works.
 ## Features
 
 - Convert a color between hex, RGB, and HSL — edit any format and the others update instantly.
-- Live swatch preview in both light and dark.
+- Live swatch preview and WCAG contrast against black and white.
+- A foreground/background contrast checker with a live preview and AA/AAA verdicts.
+- Theme-color swatches load the Terminal Workbench palette in one click.
 - Handles shorthand hex and alpha.
 - **Both themes, six accents** — dark by default, light by preference or toggle; inputs, scrollbars and focus rings all follow the theme.
 - **The ghost** — the family site pet, ported from [worldclock](https://github.com/Real-Fruit-Snacks/worldclock). It drifts, naps, and flees the cursor. Click it to recolor it.
