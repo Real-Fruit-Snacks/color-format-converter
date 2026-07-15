@@ -38,6 +38,18 @@ Everything updates as you type.</p>
     placeholder="#ff6e7a, rgb(255,110,122), hsl(354,100%,72%)">
 </div>
 
+<div class="cc-swatches" id="cc-swatches">
+  <span class="manifest-label">theme colors</span>
+  <button type="button" data-var="--twb-accent" style="background:var(--twb-accent)" title="accent" aria-label="accent"></button>
+  <button type="button" data-var="--twb-accent-alt" style="background:var(--twb-accent-alt)" title="accent-alt" aria-label="accent-alt"></button>
+  <button type="button" data-var="--twb-warm" style="background:var(--twb-warm)" title="warm" aria-label="warm"></button>
+  <button type="button" data-var="--twb-violet" style="background:var(--twb-violet)" title="violet" aria-label="violet"></button>
+  <button type="button" data-var="--twb-orange" style="background:var(--twb-orange)" title="orange" aria-label="orange"></button>
+  <button type="button" data-var="--twb-red" style="background:var(--twb-red)" title="red" aria-label="red"></button>
+  <button type="button" data-var="--twb-bg-0" style="background:var(--twb-bg-0)" title="background" aria-label="background"></button>
+  <button type="button" data-var="--twb-text-normal" style="background:var(--twb-text-normal)" title="text" aria-label="text"></button>
+</div>
+
 <p id="cc-error" class="cc-error" hidden></p>
 
 <div id="cc-results" class="cc-results">
@@ -54,6 +66,23 @@ Everything updates as you type.</p>
 ignored). AA needs 4.5:1 for normal text and 3:1 for large (≥24px, or ≥18.66px bold); AAA
 needs 7:1 and 4.5:1.</p>
 <div id="cc-contrast" class="cc-contrast"></div>
+
+<h2>Foreground vs background</h2>
+<p class="cc-note">Pick any two colors — text and its background — and check their contrast
+directly. Use the swatches above or type any format into the boxes.</p>
+<div class="cc-fgbg">
+  <div class="cc-fgbg-inputs">
+    <label>foreground
+      <input type="color" id="cc-fg" value="#dce4df" aria-label="Foreground color">
+      <input type="text" id="cc-fg-text" value="#dce4df" autocomplete="off" spellcheck="false" aria-label="Foreground color value">
+    </label>
+    <label>background
+      <input type="color" id="cc-bg" value="#0e1214" aria-label="Background color">
+      <input type="text" id="cc-bg-text" value="#0e1214" autocomplete="off" spellcheck="false" aria-label="Background color value">
+    </label>
+  </div>
+  <div id="cc-fgbg-result" class="cc-fgbg-result"></div>
+</div>
 <details class="tool-learn"><summary class="manifest-label">color formats 101</summary><div class="tool-learn-body"><h3>The three formats</h3>
 <table>
 <thead><tr><th>format</th><th>looks like</th><th>good for</th></tr></thead>

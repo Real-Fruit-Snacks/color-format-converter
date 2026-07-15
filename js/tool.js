@@ -124,5 +124,45 @@
 
   input.addEventListener("input", function () { update(false); });
   picker.addEventListener("input", function () { input.value = picker.value; update(true); });
+
+  // theme-color swatches: load a live --twb-* token into the main input
+  var swatches = $("cc-swatches");
+  if (swatches) {
+    swatches.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-var]"); if (!b) return;
+      var v = getComputedStyle(document.documentElement).getPropertyValue(b.getAttribute("data-var")).trim();
+      if (v) { input.value = v; update(false); }
+    });
+  }
+
+  // foreground / background contrast checker
+  var fg = $("cc-fg"), fgT = $("cc-fg-text"), bg = $("cc-bg"), bgT = $("cc-bg-text"), fbRes = $("cc-fgbg-result");
+  if (fg && bg && fbRes) {
+    function toHex(c) { return "#" + hex2(c.r) + hex2(c.g) + hex2(c.b); }
+    function fb() {
+      var cf = parse(fgT.value), cb = parse(bgT.value);
+      if (!cf || !cb) {
+        fbRes.innerHTML = '<p class="cc-note">Enter two recognizable colors above.</p>';
+        return;
+      }
+      var r = ratio(luminance(cf), luminance(cb));
+      fbRes.innerHTML =
+        '<div class="cc-fgbg-preview" style="background:' + toHex(cb) + ';color:' + toHex(cf) + '">' +
+          '<span class="cc-fgbg-big">Aa</span>' +
+          '<span class="cc-fgbg-small">The quick brown fox jumps over the lazy dog</span></div>' +
+        '<div class="cc-fgbg-meta"><div class="cc-cc-ratio">' + round2(r) + ":1</div>" +
+          '<div class="cc-badges">AA normal ' + badge(r >= 4.5) + " · AA large " + badge(r >= 3) +
+          " · AAA normal " + badge(r >= 7) + " · AAA large " + badge(r >= 4.5) + "</div></div>";
+    }
+    function bindPair(colorEl, textEl) {
+      colorEl.addEventListener("input", function () { textEl.value = colorEl.value; fb(); });
+      textEl.addEventListener("input", function () {
+        var c = parse(textEl.value); if (c) colorEl.value = toHex(c); fb();
+      });
+    }
+    bindPair(fg, fgT); bindPair(bg, bgT);
+    fb();
+  }
+
   update(false);
 })();

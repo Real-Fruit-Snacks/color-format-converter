@@ -437,6 +437,17 @@ code {
 .note button:hover { border-color: var(--twb-border-strong); color: var(--twb-text-normal); }
 .note button:focus-visible { outline: 2px solid var(--twb-focus-ring); outline-offset: 1px; }
 
+/* quick-start example buttons (nmap/tcpdump/systemd/schtasks/text-codec) */
+.tool-examples { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 12px 0 16px; }
+.tool-examples-label { margin-right: 2px; }
+.note .tool-examples button {
+  font-family: var(--twb-font-mono); font-size: 12px;
+  background: color-mix(in srgb, var(--twb-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--twb-accent) 28%, var(--twb-border));
+  border-radius: 4px; color: var(--twb-accent); padding: 3px 10px; cursor: pointer;
+}
+.note .tool-examples button:hover { background: var(--twb-accent); color: var(--twb-text-on-accent); border-color: var(--twb-accent); }
+
 /* code-block copy button (added by content.js) — overrides generic .note button */
 .note button.copy-code, button.copy-code {
   font-family: var(--twb-font-mono); font-size: 9.5px; font-weight: 600;
@@ -499,3 +510,37 @@ code {
 }
 .cc-pass { color: var(--twb-accent-alt); }
 .cc-fail { color: var(--twb-red); }
+
+/* theme-color swatches */
+.cc-swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 12px 0 4px; }
+.cc-swatches .manifest-label { margin-right: 4px; }
+.cc-swatches button {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1px solid var(--twb-border); cursor: pointer; padding: 0;
+}
+.cc-swatches button:hover { outline: 2px solid var(--twb-focus-ring); outline-offset: 1px; }
+
+/* foreground / background contrast checker */
+.cc-fgbg { display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: flex-start; margin: 12px 0; }
+.cc-fgbg-inputs { display: flex; flex-direction: column; gap: 10px; }
+.cc-fgbg-inputs label {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--twb-font-mono); font-size: 12px; color: var(--twb-text-muted);
+}
+.cc-fgbg-inputs input[type="color"] {
+  width: 34px; height: 28px; padding: 0; border: 1px solid var(--twb-border);
+  border-radius: 6px; background: none; cursor: pointer;
+}
+.cc-fgbg-inputs input[type="text"] {
+  width: 9em; background: var(--twb-bg-0); color: var(--twb-text-normal);
+  border: 1px solid var(--twb-border); border-radius: 6px;
+  font-family: var(--twb-font-mono); font-size: 13px; padding: 5px 8px;
+}
+.cc-fgbg-preview {
+  border: 1px solid var(--twb-border); border-radius: 8px; padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 4px; min-width: 200px;
+}
+.cc-fgbg-big { font-size: 28px; font-weight: 700; line-height: 1.1; }
+.cc-fgbg-small { font-size: 13px; }
+.cc-fgbg-meta { margin-top: 10px; }
+.cc-fgbg-meta .cc-cc-ratio { font-size: 18px; font-weight: 700; }
